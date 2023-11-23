@@ -24,7 +24,10 @@ streamlit.dataframe(fruits_to_show)
 
 #NewSection to display fruityvice api response
 streamlit.header("Fruityvice Fruit Advice!")
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+
+fruit_for_advice = streamlit.selectbox("Pick a fruit to see it's information",list(my_fruit_list.index),'Watermelon')
+
+fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/[fruit_for_advice]")
 streamlit.text(fruityvice_response.json())
 
 
