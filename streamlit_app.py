@@ -23,7 +23,7 @@ fruits_to_show = my_fruit_list.loc[fruits_selected] # filter the table based on 
 streamlit.dataframe(fruits_to_show)
 
 #################
-NewSection to display fruityvice api response
+# NewSection to display fruityvice api response
 ################ 
 
 streamlit.header("Fruityvice Fruit Advice!")
