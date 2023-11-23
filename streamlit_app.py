@@ -22,16 +22,19 @@ fruits_to_show = my_fruit_list.loc[fruits_selected] # filter the table based on 
 # Display the table on the page.
 streamlit.dataframe(fruits_to_show)
 
-#NewSection to display fruityvice api response
+#################
+NewSection to display fruityvice api response
+################ 
+
 streamlit.header("Fruityvice Fruit Advice!")
 
-# could use below to have a selectbox where you select an option and the fruityvice json for that fruit is returned
-# issue is that not all the fruits in my_fruit_list have entries in fruityvice
-# fruit_for_advice = streamlit.selectbox("Pick a fruit to see it's information",list(my_fruit_list.index))
-# fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/{fruit_for_advice}")
+# text input so that user can choose which fruit to see information about
+fruit_choice = streamlist.text_input('What fruit would you like information about?', 'Kiwi')
+streamlit.write('The user entered', fruit_choice)
 
-fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/watermelon")
-streamlit.text(fruityvice_response.json()) # just writes the data to the screen
+
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+# streamlit.text(fruityvice_response.json()) # just writes the data to the screen
 
 # takes the json version of the response and normalizes it
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
